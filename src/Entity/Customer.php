@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CustomerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,9 +25,19 @@ class Customer
     private $firstname;
 
     /**
-     * @ORM\OneToOne(targetEntity=Order::class, mappedBy="customer", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=50)
      */
-    private $orders;
+    private $lastname;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer", orphanRemoval=true)
+     */
+    private $customerOrders;
+
+    public function __construct()
+    {
+        $this->customerOrders = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,19 +56,44 @@ class Customer
         return $this;
     }
 
-    public function getOrders(): ?Order
+    public function getLastname(): ?string
     {
-        return $this->orders;
+        return $this->lastname;
     }
 
-    public function setOrders(Order $orders): self
+    public function setLastname(string $lastname): self
     {
-        // set the owning side of the relation if necessary
-        if ($orders->getCustomer() !== $this) {
-            $orders->setCustomer($this);
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getCustomerOrders(): Collection
+    {
+        return $this->customerOrders;
+    }
+
+    public function addCustomerOrder(Order $customerOrder): self
+    {
+        if (!$this->customerOrders->contains($customerOrder)) {
+            $this->customerOrders[] = $customerOrder;
+            $customerOrder->setCustomer($this);
         }
 
-        $this->orders = $orders;
+        return $this;
+    }
+
+    public function removeCustomerOrder(Order $customerOrder): self
+    {
+        if ($this->customerOrders->removeElement($customerOrder)) {
+            // set the owning side to null (unless already changed)
+            if ($customerOrder->getCustomer() === $this) {
+                $customerOrder->setCustomer(null);
+            }
+        }
 
         return $this;
     }
