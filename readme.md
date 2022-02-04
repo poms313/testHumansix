@@ -1,41 +1,47 @@
-# Test technique humansix
+# Technical Requirements
 
-Le but de ce test est de mesurer le niveau technique du candidat et la façon de résoudre une problématique. Cela permet aussi de comprendre l'affinité d'un candidat avec le backend ou le frontend.
+Technical Requirements o for computer for run the project:
 
-Le backend doit se faire en php from scratch, framework (Symfony, Laravel, etc) ou un CMS php de votre choix (Drupal, Wordpress, etc).
+Composer:
+https://getcomposer.org/download/
 
-Le frontend peut se faire librement (html5, jquery, react, vuejs, template, ...).
+Symfony:
+https://symfony.com/doc/current/setup.html
 
-Vous êtes libre dans le choix de la base de données.
+GitHub:
+https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
-Vous devrez indiquer comment installer votre projet (installation manuelle, docker, vagrant, etc).
 
-## Step 1 - Mise en place d'une base
+## Step 1 - Instal the project
 
-Vous devez analyser le xml orders.xml afin de créer les tables correspondantes, puis créer un script afin d'y injecter les données du xml.
+in command prompt:
+git clone https://github.com/poms313/testHumansix
 
-## Step 2 - Mise en place d'un front
 
-Vous devez créer une page de connexion avec comme utilisateur :
+then:
+composer install 
 
- - Login : admin
- - Pass : S3cr3T+
+ fichier .env du projet, et modifier la variable d'environnement selon vos paramètres :
+        
 
-Une fois l'utilisateur connecté, vous devez afficher une page de résultats contenant les commandes qui sont en base de données.
+### Step 2 - Create database
 
-Ces résultats doivent être triables au moins par date.
+change the database url in .env with your parameters:
+DATABASE_URL=mysql://User:Password@127.0.0.1:3306/nameDatabasse?serverVersion=5.7
 
-Il faut ensuite créer un formulaire pour créer une nouvelle commande avec les produits existants en base.
+then:
+symfony console doctrine:database:create
 
-## Step 3 - Mise en place d'une micro API (optionnel)
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
 
-Vous devez créer une micro API REST (en accès publique) qui permet de récupérer en GET les commandes et les produits.
 
-La réponse doit être en JSON.
+###### Step 3 - start
 
-Exemples d'appels API souhaités :
+For startoing the project, write:
+symfony server:start
 
- - http://localhost/api/orders : afficher toutes les commandes
- - http://localhost/api/order/{id} : afficher une commande en fonction de son id
- - http://localhost/api/products : afficher toutes les commandes
- - http://localhost/api/product/{sku} : afficher un produit en fonction de son sku
+It run on: http://127.0.0.1:8000/
+
+For security reasons, you must create a new user before accessing the administration area
+The link is in the home page

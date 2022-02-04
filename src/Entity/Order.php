@@ -21,12 +21,6 @@ class Order
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="customerOrders", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $customer;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $date;
@@ -37,52 +31,37 @@ class Order
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity=CartItem::class, mappedBy="cartItem", orphanRemoval=true)
-     */
-    private $cartItem;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $price;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Customer::class, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
+
+    /**
      * @ORM\Column(type="integer")
      */
-    private $orderId;
+    private $orderNumber;
 
     /**
-     * @ORM\OneToMany(targetEntity=CartItem::class, mappedBy="orderId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=CartItem::class, mappedBy="orderNumber", orphanRemoval=true, cascade={"persist"})
      */
-    private $cartitem;
-
-    /**
-     * @ORM\OneToMany(targetEntity=CartItem::class, mappedBy="orderId", orphanRemoval=true)
-     */
-    private $cartItems;
+    private $cartItem;
 
     public function __construct()
     {
         $this->cartItem = new ArrayCollection();
-        $this->cartitem = new ArrayCollection();
-        $this->cartItems = new ArrayCollection();
     }
+
+
+   
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCustomer(): ?Customer
-    {
-        return $this->customer;
-    }
-
-    public function setCustomer(?Customer $customer): self
-    {
-        $this->customer = $customer;
-
-        return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
@@ -109,14 +88,6 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection|CartItem[]
-     */
-    public function getCartItem(): Collection
-    {
-        return $this->cartItem;
-    }
-
     public function getPrice(): ?int
     {
         return $this->price;
@@ -129,14 +100,26 @@ class Order
         return $this;
     }
 
-    public function getOrderId(): ?int
+    public function getCustomer(): ?Customer
     {
-        return $this->orderId;
+        return $this->customer;
     }
 
-    public function setOrderId(int $orderId): self
+    public function setCustomer(?Customer $customer): self
     {
-        $this->orderId = $orderId;
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    public function getOrderNumber(): ?int
+    {
+        return $this->orderNumber;
+    }
+
+    public function setOrderNumber(int $orderNumber): self
+    {
+        $this->orderNumber = $orderNumber;
 
         return $this;
     }
@@ -144,16 +127,16 @@ class Order
     /**
      * @return Collection|CartItem[]
      */
-    public function getCartItems(): Collection
+    public function getCartItem(): Collection
     {
-        return $this->cartItems;
+        return $this->cartItem;
     }
 
     public function addCartItem(CartItem $cartItem): self
     {
-        if (!$this->cartItems->contains($cartItem)) {
-            $this->cartItems[] = $cartItem;
-            $cartItem->setOrderId($this);
+        if (!$this->cartItem->contains($cartItem)) {
+            $this->cartItem[] = $cartItem;
+            $cartItem->setOrderNumber($this);
         }
 
         return $this;
@@ -161,13 +144,15 @@ class Order
 
     public function removeCartItem(CartItem $cartItem): self
     {
-        if ($this->cartItems->removeElement($cartItem)) {
+        if ($this->cartItem->removeElement($cartItem)) {
             // set the owning side to null (unless already changed)
-            if ($cartItem->getOrderId() === $this) {
-                $cartItem->setOrderId(null);
+            if ($cartItem->getOrderNumber() === $this) {
+                $cartItem->setOrderNumber(null);
             }
         }
 
         return $this;
     }
+
+
 }

@@ -1,0 +1,14 @@
+{% extends 'home/home.html.twig' %}{% form_theme registrationForm 'bootstrap_4_layout.html.twig' %} {% block title %}Register{% endblock %} {% block content %}
+<div class="m-4">
+    <h1>Inscriptions</h1>
+</div>
+
+{% if createNewUser == false %}
+<p>Inscriptions désactivées</p>
+{% else %}
+<p>Inscriptions activées</p>
+{% endif %}
+<div class="alert alert-warning m-2 p-1">
+    <p>N'oubliez pas de désactiver les inscriptions dans le controller Registration</p>
+</div>
+{{ form_start(registrationForm) }} {{ form_row(registrationForm.username) }} {{ form_row(registrationForm.plainPassword) }} {{ form_row(registrationForm.agreeTerms) }} {{ form_end(registrationForm) }} {% endblock %}

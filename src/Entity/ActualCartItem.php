@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CartItemRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\ActualCartItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CartItemRepository::class)
+ * @ORM\Entity(repositoryClass=ActualCartItemRepository::class)
  */
-class CartItem
+class ActualCartItem
 {
     /**
      * @ORM\Id
@@ -25,16 +23,15 @@ class CartItem
     private $itemQuantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="cartItem")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $orderNumber;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Product::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getItemQuantity(): ?int
     {
@@ -44,18 +41,6 @@ class CartItem
     public function setItemQuantity(int $itemQuantity): self
     {
         $this->itemQuantity = $itemQuantity;
-
-        return $this;
-    }
-
-    public function getOrderNumber(): ?Order
-    {
-        return $this->orderNumber;
-    }
-
-    public function setOrderNumber(?Order $orderNumber): self
-    {
-        $this->orderNumber = $orderNumber;
 
         return $this;
     }
@@ -71,5 +56,4 @@ class CartItem
 
         return $this;
     }
-  
 }

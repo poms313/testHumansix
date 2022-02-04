@@ -1,0 +1,24 @@
+{% extends 'admin/admin.html.twig' %} {% block title %}Nouvelle commande{% endblock %} {% form_theme order_form 'bootstrap_4_layout.html.twig' %} {% block content %}
+<h1 class="text-primary d-flex my-4 justify-content-center">Nouvelle commande</h1>
+
+
+<div class="shadow-lg my-4 text-center justify-content-center p-2 m-2">
+    {{ form_start(order_form) }}
+    <div class="form-group">
+        <label class="form-label" for="date">Date:</label> {{ form_widget(order_form.date) }}
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="users">Utilisateurs enregistrés:</label> {{ form_widget(order_form.customer) }}
+        <div class="invalid-feedback">
+            <p>Choisisez un utilisateur</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="users">Status:</label> {{ form_widget(order_form.status) }}
+        <div class="invalid-feedback">
+            <p>Choisisez un status</p>
+        </div>
+    </div>
+    {{ form_widget(order_form.submit) }} {{ form_end(order_form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'admin/admin.html.twig' %} {% block title %}Ajout Xml{% endblock %} {% block content %}
+<div>
+    <h1 class="text-primary d-flex my-4 justify-content-center">Résultat du chargement:</h1>
+    {% if countAddedOrdersInDatabase > 0 %}
+    <p>{{ countAddedOrdersInDatabase }} commandes ont été insérées dans la base de donnée.</p>
+    {% else %}
+    <p>Pas de modifications de la base de donnée, les commandes existent déjà.</p>
+    {% endif %} {% if countAddedCustomersInDatabase > 0 %}
+    <p>{{ countAddedCustomersInDatabase }} nouveaux utilisateurs ont été insérés dans la base de donnée.</p>
+    {% else %}
+    <p>Pas de modifications de la base de donnée, les utilisateurs existent déjà.</p>
+    {% endif %} {% if countAddedProductsInDatabase > 0 %}
+    <p>{{ countAddedProductsInDatabase }} produits ont été insérés dans la base de donnée.</p>
+    {% else %}
+    <p>Pas de modifications de la base de donnée, les produits existent déjà.</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}

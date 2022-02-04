@@ -1,0 +1,39 @@
+{% extends 'admin/admin.html.twig' %} {% block title %}Commandes{% endblock %} {% block content %}
+<h1 class="text-primary d-flex my-4 justify-content-center">Liste des commandes</h1>
+<div class="rounded border m-2 p-2 justify-content-center">
+    <p>Trier par:</p>
+    <p><a class="btn btn-primary" href="{{path('admin_orders', {'critera': 'date', 'direction':'ASC'} )}}">Date croissante</a></p>
+    <p><a class="btn btn-primary" href="{{path('admin_orders', {'critera': 'date', 'direction':'DESC'} )}}">Date décroissante</a></p>
+    <p><a class="btn btn-primary" href="{{path('admin_orders', {'critera': 'price', 'direction':'ASC'} )}}">Prix total croissant</a></p>
+    <p><a class="btn btn-primary" href="{{path('admin_orders', {'critera': 'price', 'direction':'DESC'} )}}">Prix total décroissant</a></p>
+    <p>Résultat actuellement triés par {{ critera }}, sens: {% if direction == "ASC" %}
+        <span>croissant.</span> {% else %} <span>décroissant.</span> {% endif %}
+    </p>
+    <p>Attention: les commandes en rouge sont annulées</p>
+</div>
+<div class="shadow-lg my-4 gridContainer text-center">
+    {% for order in ordersList %} {% if order.status == "canceled" %}
+    <div class="bg-danger rounded m-2 p-2">
+        {% else %}
+        <div class="bg-primary rounded m-2 p-2"> {% endif %}
+            <h2 class="m-2">Numéro de commande: {{ order.orderNumber }}</h2>
+            <h3>Commandé par</h3>
+            <div class="bg-white border border-dark rounded m-2 p-2">
+                <p>Prénom: {{ order.customer.firstname }}</p>
+                <p>Nom: {{ order.customer.lastname }}</p>
+            </div>
+            <p>Date: le {{ order.date | date('d-m-Y') }}</p>
+            <h3>Status: {{ order.status }}</h3>
+            <h3>Contenu de la commande</h3>
+            {% for cartItem in order.cartItem %}
+            <div class="bg-white border border-dark rounded m-2 p-2">
+                <h5>Nom du produit: {{ cartItem.product.name }}</h5>
+                <p>Prix unitaire: {{ cartItem.product.price }}€</p>
+                <p>Quantité: {{ cartItem.itemQuantity }}</p>
+            </div>
+            {% endfor %}
+            <h3 class="m-2">Total: {{ order.price }}€</h3>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

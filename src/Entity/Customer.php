@@ -29,15 +29,7 @@ class Customer
      */
     private $lastname;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer", orphanRemoval=true)
-     */
-    private $customerOrders;
-
-    public function __construct()
-    {
-        $this->customerOrders = new ArrayCollection();
-    }
+ 
 
     public function getId(): ?int
     {
@@ -68,33 +60,5 @@ class Customer
         return $this;
     }
 
-    /**
-     * @return Collection|Order[]
-     */
-    public function getCustomerOrders(): Collection
-    {
-        return $this->customerOrders;
-    }
-
-    public function addCustomerOrder(Order $customerOrder): self
-    {
-        if (!$this->customerOrders->contains($customerOrder)) {
-            $this->customerOrders[] = $customerOrder;
-            $customerOrder->setCustomer($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomerOrder(Order $customerOrder): self
-    {
-        if ($this->customerOrders->removeElement($customerOrder)) {
-            // set the owning side to null (unless already changed)
-            if ($customerOrder->getCustomer() === $this) {
-                $customerOrder->setCustomer(null);
-            }
-        }
-
-        return $this;
-    }
+   
 }

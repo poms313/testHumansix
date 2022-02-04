@@ -1,7 +1,12 @@
-{% extends 'base.html.twig' %} {% block title %}Hello HomeController!{% endblock %} {% block body %}
+{% extends 'home/home.html.twig' %} {% block title %}Hello HomeController!{% endblock %} {% block content %}
 
-
-<div class="">
-    <p><a class="" href="{{path('xml')}}">Insertion des données XML</a></p>
+<div class="m-4">
+    <h1>Test Technique Humansix</h1>
 </div>
+<p><a class="customBtn" href="{{path('admin')}}">Administration</a></p>
+<p><a class="customBtn" href="{{path('home_login')}}">Connexion</a></p>
+<p><a class="customBtn" href="{{path('home_register')}}">Inscription</a></p>
+<p><a class="customBtn" href="{{path('home_register')}}">API</a></p>
+
+
 {% endblock %}

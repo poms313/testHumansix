@@ -1,0 +1,65 @@
+{% extends 'admin/admin.html.twig' %} {% block title %}Ajouter au panier{% endblock %} {% form_theme cart_form 'bootstrap_4_layout.html.twig' %} {% block content %}
+<h1 class="text-primary d-flex my-4 justify-content-center">Ajouter au panier</h1>
+
+
+{{ form_start(cart_form) }}
+<div class="form-group">
+    <label class="form-label" for="product">Produit:</label> {{ form_widget(cart_form.product) }}
+    <div class="invalid-feedback">
+        <p>Choisisez un produit</p>
+    </div>
+</div>
+<div class="form-group">
+    <label class="form-label" for="itemQuantity">Quantité:</label> {{ form_widget(cart_form.itemQuantity) }}
+    <div class="invalid-feedback">
+        <p>La valeur saisie doit être un chiffre compris entre 1 et 20</p>
+    </div>
+</div>
+{{ form_widget(cart_form.addCartItem) }} {{ form_end(cart_form) }}
+
+<div class="rounded border bg-primary container m-4">
+    {% if actualCart %}
+    <h1 class="m-2">Votre panier en cours</h1>
+    <div class="container">
+        <div class="row bg-white border rounded m-2 p-2">
+            <div class="col-md-4">
+                <p>Nom:</p>
+            </div>
+            <div class="col-md-4">
+                <p>Prix:</p>
+            </div>
+            <div class="col-md-4">
+                <p>Quantité:</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {% for cartItem in actualCart %}
+        <div class="row bg-white border rounded m-2 p-2">
+            <div class="col-md-4">
+                <p>{{ cartItem.product.name }}</p>
+            </div>
+            <div class="col-md-4">
+                <p>{{ cartItem.product.price }}€</p>
+            </div>
+            <div class="col-md-4">
+                <p>{{ cartItem.itemQuantity }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+        <p><a class="btn-block customBtn" href="{{path('admin_new_order')}}">Valider le panier</a></p>
+    </div>
+    {% else %}
+    <div class="alert alert-info m-2 p-1">
+        <p> Votre panier est vide.</p>
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+
+
+{% endblock %}
