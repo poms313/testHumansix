@@ -19,6 +19,10 @@
             <p>Choisisez un status</p>
         </div>
     </div>
+    <div class="form-group">
+        <label class="form-label" for="users">Paiement:</label>
+        <input type="text" value="Chèque">
+    </div>
     {{ form_widget(order_form.submit) }} {{ form_end(order_form) }}
 </div>
 {% endblock %}

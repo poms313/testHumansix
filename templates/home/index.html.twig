@@ -1,12 +1,12 @@
-{% extends 'home/home.html.twig' %} {% block title %}Hello HomeController!{% endblock %} {% block content %}
+{% extends 'home/home.html.twig' %} {% block title %}Acceuil{% endblock %} {% block content %}
 
-<div class="m-4">
+<div class="m-4 animateTextColor">
     <h1>Test Technique Humansix</h1>
 </div>
 <p><a class="customBtn" href="{{path('admin')}}">Administration</a></p>
 <p><a class="customBtn" href="{{path('home_login')}}">Connexion</a></p>
 <p><a class="customBtn" href="{{path('home_register')}}">Inscription</a></p>
-<p><a class="customBtn" href="{{path('home_register')}}">API</a></p>
+<p><a class="customBtn" href="{{path('api_home')}}">API</a></p>
 
 
 {% endblock %}

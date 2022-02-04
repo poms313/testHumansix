@@ -12,7 +12,7 @@ GitHub:
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 
-## Step 1 - Instal the project
+## Step 1 - Install the project
 
 in command prompt:
 git clone https://github.com/poms313/testHumansix
@@ -32,6 +32,7 @@ DATABASE_URL=mysql://User:Password@127.0.0.1:3306/nameDatabasse?serverVersion=5.
 then:
 symfony console doctrine:database:create
 
+add entity to the database:
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 

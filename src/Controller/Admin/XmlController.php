@@ -15,6 +15,12 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class XmlController extends AbstractController
 {
+    public function __construct(ManagerRegistry $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
+    
     /**
      * @Route("/admin/xml", name="admin_xml")
      */
@@ -90,14 +96,7 @@ class XmlController extends AbstractController
             'countAddedCustomersInDatabase' =>  $countAddedCustomersInDatabase,
             'countAddedProductsInDatabase' =>  $countAddedProductsInDatabase,
         ]);
-    }
-
-    private $doctrine;
-    public function __construct(ManagerRegistry $doctrine)
-    {
-        $this->doctrine = $doctrine;
-    }
-
+    } 
 
     public function save($entity)
     {

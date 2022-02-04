@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 :root {
-    --color-white: rgb(255, 255, 255);
     --color-red: rgb(255, 6, 6);
-    --color-grey: rgb(19, 19, 19);
+    --color-grey: rgb(131, 131, 131);
     --color-black: rgb(0, 0, 0);
 }
 

@@ -1,0 +1,16 @@
+{% extends 'home/home.html.twig' %} {% block title %}API liens{% endblock %} {% block content %}
+<div class="m-2 animateTextColor">
+    <h1>API liste des liens</h1>
+</div>
+<div class="m-2 p-2">
+    <p>Tous les produits: <a href="{{path('api_products')}}">http://127.0.0.1:8000/api/products</a></p>
+    <p>Toutes les commandes: <a href="{{path('api_orders')}}">http://127.0.0.1:8000/api/orders</a></p>
+    <p>Tous les utilisateurs: <a href="{{path('api_customers')}}">http://127.0.0.1:8000/api/customers</a></p>
+</div>
+<div class="m-2 p-2">
+    <p>Choisisez un Id et rajoutez le à la fin de l'url</p>
+    <p>Un produit par Id: http://127.0.0.1:8000/api/product/ +id</p>
+    <p>Une commande par numéro de commande: http://127.0.0.1:8000/api/order/ +id</p>
+    <p>Un utilisateur par Id: http://127.0.0.1:8000/api/customer/ +id</p>
+</div>
+{% endblock %}
