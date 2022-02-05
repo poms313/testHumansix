@@ -27,7 +27,7 @@ class XmlController extends AbstractController
     public function insertXmlToDatabase(): Response
     {
         $entityManager = $this->doctrine->getManager();
-        $xml = simplexml_load_file("orders.xml") or die("Error: Cannot create object");
+        $xml = simplexml_load_file('orders.xml') or die('Error: Cannot create object');
 
         $countAddedCustomersInDatabase = 0;
         $countAddedProductsInDatabase = 0;

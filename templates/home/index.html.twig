@@ -1,12 +1,24 @@
 {% extends 'home/home.html.twig' %} {% block title %}Acceuil{% endblock %} {% block content %}
 
-<div class="m-4 animateTextColor">
+<div class="m-4 animate-text-color">
     <h1>Test Technique Humansix</h1>
 </div>
-<p><a class="customBtn" href="{{path('admin')}}">Administration</a></p>
-<p><a class="customBtn" href="{{path('home_login')}}">Connexion</a></p>
-<p><a class="customBtn" href="{{path('home_register')}}">Inscription</a></p>
-<p><a class="customBtn" href="{{path('api_home')}}">API</a></p>
-
-
+<div class="m-2">
+    <p><a class="custom-btn" href="{{path('admin')}}">Administration</a></p>
+    <p><a class="custom-btn" href="{{path('home_login')}}">Connexion</a></p>
+    <p><a class="custom-btn" href="{{path('home_register')}}">Inscription</a></p>
+    <p><a class="custom-btn" href="{{path('api_home')}}">API</a></p>
+</div>
+<hr>
+<div class="m-2 bg-white">
+    <h2 class="animate-text-color">Mes liens</h2>
+    <p>
+        <span><i class="bi bi-github"></i><a href="https://github.com/poms313" rel="noopener noreferrer nofollow" target="_blank"> GitHub </a></span>
+        <span><i class="bi bi-code-slash"></i><a href="https://codepen.io/diablo313" rel="noopener noreferrer nofollow" target="_blank">  CodePen </a></span>
+    </p>
+    <p>
+        <span><i class="bi bi-linkedin"></i><a href="https://www.linkedin.com/in/pommine-fillatre" rel="noopener noreferrer nofollow" target="_blank"> Linkedin </a></span>
+        <span><i class="bi bi-journal-code"></i><a href="https://www.pommine-fillatre.com" rel="noopener noreferrer nofollow" target="_blank"> Mon portfolio </a></span>
+    </p>
+</div>
 {% endblock %}

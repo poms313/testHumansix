@@ -11,7 +11,7 @@
     </p>
     <p>Attention: les commandes en rouge sont annulées</p>
 </div>
-<div class="shadow-lg my-4 gridContainer text-center">
+<div class="shadow-lg my-4 grid-container text-center">
     {% for order in ordersList %} {% if order.status == "canceled" %}
     <div class="bg-danger rounded m-2 p-2">
         {% else %}

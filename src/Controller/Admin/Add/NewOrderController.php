@@ -15,19 +15,22 @@ use App\Repository\OrderRepository;
 use Symfony\Component\HttpFoundation\Request;
 use \Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Repository\ActualCartItemRepository;
-use App\Entity\ActualCartItem;
+use App\Repository\WaitingOrderCartRepository;
+use App\Entity\waitingOrderCart;
 
 class NewOrderController extends AbstractController
 {
     /**
      * @Route("/admin/new/order", name="admin_new_order")
      */
-    public function index(Request $request, ManagerRegistry $doctrine, ActualCartItemRepository $actualCartItemRepository, OrderRepository $orderRepository): Response
+    public function index(Request $request, ManagerRegistry $doctrine, WaitingOrderCartRepository $waitingOrderCartRepository, OrderRepository $orderRepository): Response
     {
 
         $form = $this->createForm(NewOrderType::class);
         $form->handleRequest($request);
+
+        /* check if cart is empty or not */
+        $actualCart = $waitingOrderCartRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $newOrder = new Order();
@@ -37,7 +40,6 @@ class NewOrderController extends AbstractController
             $incrementedLastOrderNumber = $lastOrderNumber->getOrderNumber() + 1;
             $newOrder->setOrderNumber($incrementedLastOrderNumber);
 
-            $actualCart = $actualCartItemRepository->findAll();
             $totalPrice = 0;
 
             foreach ($actualCart as $newCartItem) {
@@ -56,12 +58,13 @@ class NewOrderController extends AbstractController
             $entityManager->flush();
 
             /* clear actual cart */
-            $actualCartItemRepository->deleteAll();
+            $waitingOrderCartRepository->deleteAll();
             return $this->redirectToRoute('admin_orders');
         }
 
         return $this->render('admin/new/new_order/index.html.twig', [
             'order_form' => $form->createView(),
+            'actualCart' => $actualCart,
         ]);
     }
 }

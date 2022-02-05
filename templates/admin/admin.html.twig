@@ -4,26 +4,29 @@
     <div class="row">
         <!-- sidebar -->
         <div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
+            <button id="close-sidebar" type="button" class="close m-2 pull-right d-none" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             <h2 class="text-primary d-flex my-4 justify-content-center">Admin</h2>
             <div class="list-group rounded-0">
                 <a href="{{path('admin')}}" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
-                    <span class="bi bi-border-all"></span>
+                    <i class="bi bi-border-all"></i>
                     <span class="ml-2">Acceuil</span>
                 </a>
                 <a href="{{path('admin_orders')}}" class="list-group-item list-group-item-action border-0 align-items-center">
-                    <span class="bi bi-card-checklist"></span>
+                    <i class="bi bi-card-checklist"></i>
                     <span class="ml-2">Commandes</span>
                 </a>
                 <a href="{{path('admin_products')}}" class="list-group-item list-group-item-action border-0 align-items-center">
-                    <span class="bi bi-box"></span>
+                    <i class="bi bi-box"></i>
                     <span class="ml-2">Produits</span>
                 </a>
                 <a href="{{path('admin_customers')}}" class="list-group-item list-group-item-action border-0 align-items-center">
-                    <span class="bi bi-person-lines-fill"></span>
+                    <i class="bi bi-person-lines-fill"></i>
                     <span class="ml-2">Utilisateurs</span>
                 </a>
                 <a href="{{path('admin_new_cart_item')}}" class="list-group-item list-group-item-action border-0 align-items-center">
-                    <span class="bi bi-plus-circle-fill"></span>
+                    <i class="bi bi-plus-circle-fill"></i>
                     <span class="ml-2">Nouvelle commande</span>
                 </a>
             </div>
@@ -35,12 +38,12 @@
             <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
                 <!-- close sidebar -->
                 <button class="btn py-0 d-lg-none" id="open-sidebar">
-                    <span class="bi bi-list text-primary h3"></span>
+                    <i class="bi bi-list text-primary h3"></i>
                 </button>
                 <div class="dropdown ml-auto">
                     <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-toggle="dropdown" aria-expanded="false">
-                        <span class="bi bi-person text-primary h4"></span>
-                        <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
+                        <i class="bi bi-person text-primary h4"></i>
+                        <i class="bi bi-chevron-down ml-1 mb-2 small"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
                         <a class="dropdown-item" href="{{path('logout')}}">Déconnexion</a>
@@ -53,7 +56,7 @@
                     <div class="col-md-6 col-lg-4">
                         <article class="p-4 rounded shadow-sm border-left mb-4">
                             <a href="{{path('admin_orders')}}" class="d-flex align-items-center">
-                                <span class="bi bi-card-checklist h5"></span>
+                                <i class="bi bi-card-checklist h5"></i>
                                 <h5 class="ml-2">Commandes</h5>
                             </a>
                         </article>
@@ -61,7 +64,7 @@
                     <div class="col-md-6 col-lg-4">
                         <article class="p-4 rounded shadow-sm border-left mb-4">
                             <a href="{{path('admin_products')}}" class="d-flex align-items-center">
-                                <span class="bi bi-box h5"></span>
+                                <i class="bi bi-box h5"></i>
                                 <h5 class="ml-2">Produits</h5>
                             </a>
                         </article>
@@ -69,7 +72,7 @@
                     <div class="col-md-6 col-lg-4">
                         <article class="p-4 rounded shadow-sm border-left mb-4">
                             <a href="{{path('admin_customers')}}" class="d-flex align-items-center">
-                                <span class="bi  bi-person-lines-fill h5"></span>
+                                <i class="bi bi-person-lines-fill h5"></i>
                                 <h5 class="ml-2">Utilisateurs</h5>
                             </a>
                         </article>

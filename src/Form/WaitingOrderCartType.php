@@ -2,12 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\ActualCartItem;
+use App\Entity\WaitingOrderCart;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use App\Entity\Product;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 
 
-class ActualCartItemType extends AbstractType
+class WaitingOrderCartType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -43,7 +42,7 @@ class ActualCartItemType extends AbstractType
                 'label' => 'Ajouter au panier',
                 'attr' => [
                     'name' => 'addCartItem',
-                    'class' => 'customBtn button'
+                    'class' => 'custom-btn button'
                 ],
             ]);;
     }
@@ -51,7 +50,7 @@ class ActualCartItemType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => ActualCartItem::class,
+            'data_class' => WaitingOrderCart::class,
         ]);
     }
 }

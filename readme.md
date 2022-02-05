@@ -15,11 +15,11 @@ https://docs.github.com/en/repositories/creating-and-managing-repositories/cloni
 ## Step 1 - Install the project
 
 in command prompt:
-git clone https://github.com/poms313/testHumansix
+`git clone https://github.com/poms313/testHumansix`
 
 
 then:
-composer install 
+`composer install` 
 
  fichier .env du projet, et modifier la variable d'environnement selon vos paramètres :
         
@@ -27,22 +27,25 @@ composer install
 ### Step 2 - Create database
 
 change the database url in .env with your parameters:
-DATABASE_URL=mysql://User:Password@127.0.0.1:3306/nameDatabasse?serverVersion=5.7
+#DATABASE_URL="mysql://{userName}:{$password}@{127.0.0.1:3306 or other}/{databaseName}?{serverVersion}"
 
-then:
-symfony console doctrine:database:create
+or create local .env by using 
+`composer dump-env prod`
 
-add entity to the database:
-php bin/console make:migration
-php bin/console doctrine:migrations:migrate
+
+then, add entity to the database:
+`symfony console doctrine:database:create`
+`php bin/console make:migration`
+`php bin/console doctrine:migrations:migrate`
 
 
 ###### Step 3 - start
 
 For startoing the project, write:
-symfony server:start
+`symfony server:start`
 
 It run on: http://127.0.0.1:8000/
 
-For security reasons, you must create a new user before accessing the administration area
+You need to create a new user before accessing the administration area
 The link is in the home page
+For security reasons, you need to disable registration in RegistrationController

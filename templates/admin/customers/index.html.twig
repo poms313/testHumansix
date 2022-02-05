@@ -1,9 +1,9 @@
 {% extends 'admin/admin.html.twig' %} {% block title %}Utilisateurs{% endblock %} {% block content %}
 <h1 class="text-primary d-flex my-4 justify-content-center">Liste des utilisateurs</h1>
 
-<div class="shadow-lg my-4 gridContainer text-center">
+<div class="shadow-lg my-4 grid-container text-center">
     {% for customer in customersList %}
-    <div class="bg-primary rounded m-2 p-2">">
+    <div class="bg-primary rounded m-2 p-2">
         <h5>Prénom: {{ customer.firstname }}</h5>
         <p>Nom: {{ customer.lastname }}</p>
     </div>

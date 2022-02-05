@@ -1,24 +1,39 @@
-$(document).ready(() => {
-    /* Show hide the admin sidebar */
-    $('#open-sidebar').click(() => {
+document.addEventListener('DOMContentLoaded', function() {
 
-        // add class active on #sidebar
-        $('#sidebar').addClass('active');
+    /* open close the admin sidebar */
+    const openBtn = document.getElementById('open-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-        // show sidebar overlay
-        $('#sidebar-overlay').removeClass('d-none');
+    openBtn.addEventListener('click', openSidebar);
 
-    });
+    function openSidebar() {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.remove('d-none');
+        closeBtn.classList.remove('d-none');
+    }
 
+    sidebarOverlay.addEventListener('click', closeSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
 
-    $('#sidebar-overlay').click(function() {
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.add('d-none');
+        closeBtn.classList.add('d-none');
+    }
 
-        // add class active on #sidebar
-        $('#sidebar').removeClass('active');
+    /* display anim on create new order */
+    const buttonSend = document.querySelector(".button-bird");
+    if (buttonSend) {
+        const buttonSendText = document.querySelector(".button-bird-text");
+        buttonSend.addEventListener("click", change);
 
-        // show sidebar overlay
-        $(this).addClass('d-none');
-
-    });
-
+        function change() {
+            if (buttonSend.classList.contains("actif")) {
+                buttonSendText.innerHTML = "Confirmer";
+            } else buttonSendText.innerHTML = "En cours d'envoi";
+            buttonSend.classList.toggle("actif");
+        }
+    }
 });

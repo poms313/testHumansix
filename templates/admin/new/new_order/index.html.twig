@@ -3,7 +3,7 @@
 
 
 <div class="shadow-lg my-4 text-center justify-content-center p-2 m-2">
-    {{ form_start(order_form) }}
+    {% if actualCart %} {{ form_start(order_form) }}
     <div class="form-group">
         <label class="form-label" for="date">Date:</label> {{ form_widget(order_form.date) }}
     </div>
@@ -21,8 +21,49 @@
     </div>
     <div class="form-group">
         <label class="form-label" for="users">Paiement:</label>
-        <input type="text" value="Chèque">
+        <input type="text" value="Gratuit!">
     </div>
-    {{ form_widget(order_form.submit) }} {{ form_end(order_form) }}
+    <div class="container-button-bird">
+        <div class="button-bird">
+            {{ form_widget(order_form.submit) }}
+            <span class="bird"></span>
+            <span class="bird-1"></span>
+            <span class="bird-2"></span>
+            <span class="bird-3"></span>
+            <span class="bird-4"></span>
+            <span class="bird-5"></span>
+            <span class="bird-6"></span>
+            <span class="bird-7"></span>
+            <span class="bird-8"></span>
+            <span class="bird-9"></span>
+            <span class="bird-10"></span>
+            <span class="bird-11"></span>
+            <span class="bird-12"></span>
+            <span class="bird-13"></span>
+            <span class="bird-14"></span>
+            <span class="bird-15"></span>
+            <span class="bird-16"></span>
+            <span class="bird-17"></span>
+            <span class="bird-18"></span>
+            <span class="bird-19"></span>
+            <span class="bird-20"></span>
+            <span class="bird-21"></span>
+            <span class="bird-22"></span>
+            <span class="bird-23"></span>
+            <span class="bird-24"></span>
+            <span class="bird-25"></span>
+            <span class="bird-26"></span>
+            <span class="bird-27"></span>
+            <span class="bird-28"></span>
+            <span class="bird-29"></span>
+            <span class="bird-30"></span>
+        </div>
+    </div>
+
+    {% else %}
+    <h2 class="m-2">Votre panier est vide</h2>
+    <p>Cliquez ici pour le remplir</p>ajouter au panier
+    <p><a class="btn custom-btn" href="{{path('admin_new_cart_item')}}">Nouvelle commande</a></p>
+    {% endif %}
 </div>
-{% endblock %}
+{{ form_end(order_form.status) }} {% endblock %}

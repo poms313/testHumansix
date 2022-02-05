@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\ActualCartItem;
+use App\Entity\WaitingOrderCart;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ActualCartItem|null find($id, $lockMode = null, $lockVersion = null)
- * @method ActualCartItem|null findOneBy(array $criteria, array $orderBy = null)
- * @method ActualCartItem[]    findAll()
- * @method ActualCartItem[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method WaitingOrderCart|null find($id, $lockMode = null, $lockVersion = null)
+ * @method WaitingOrderCart|null findOneBy(array $criteria, array $orderBy = null)
+ * @method WaitingOrderCart[]    findAll()
+ * @method WaitingOrderCart[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ActualCartItemRepository extends ServiceEntityRepository
+class WaitingOrderCartRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ActualCartItem::class);
+        parent::__construct($registry, WaitingOrderCart::class);
     }
 
     public function deleteAll(){
@@ -28,7 +28,7 @@ class ActualCartItemRepository extends ServiceEntityRepository
 }
 
     // /**
-    //  * @return ActualCartItem[] Returns an array of ActualCartItem objects
+    //  * @return WaitingOrderCart[] Returns an array of WaitingOrderCart objects
     //  */
     /*
     public function findByExampleField($value)
@@ -45,7 +45,7 @@ class ActualCartItemRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ActualCartItem
+    public function findOneBySomeField($value): ?WaitingOrderCart
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

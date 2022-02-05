@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 :root {
+    --color-white: rgb(255, 255, 255);
     --color-red: rgb(255, 6, 6);
     --color-grey: rgb(131, 131, 131);
     --color-black: rgb(0, 0, 0);
@@ -21,7 +22,7 @@ body {
     display: block;
 }
 
-.customBtn {
+.custom-btn {
     display: block;
     min-width: 180px;
     margin: 10px auto;
@@ -29,7 +30,7 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 600;
-    background-color: var(--color-red);
+    background-color: var(--color-white);
     border: 2px solid var(--color-red);
     border-radius: 15px;
     color: var(--color-black);
@@ -37,28 +38,28 @@ body {
     transition: all 150ms ease-in-out;
 }
 
-.customBtn:hover {
+.custom-btn:hover {
     box-shadow: 0 0 5px 0 var(--color-red) inset, 0 0 10px 4px var(--color-red);
     color: var(--color-red);
     font-weight: 600;
 }
 
-#home.fullPage {
+#home.full-page {
     height: 100vh;
 }
 
-#home .animContainer {
+#home .anim-container {
     padding: 5vh;
     position: relative;
     background-color: var(--color-grey);
 }
 
-#home .animateTextColor {
-    animation: animateTextColor 20s ease infinite;
+#home .animate-text-color {
+    animation: animateTextColor 30s ease infinite;
 }
 
-#home .animShadow:after,
-#home .animShadow:before {
+#home .anim-shadow:after,
+#home .anim-shadow:before {
     position: absolute;
     content: "";
     z-index: -1;
@@ -69,15 +70,15 @@ body {
     filter: blur(1vw);
     background-color: rgb(19, 19, 19);
     background-size: 200% 200%;
-    animation: animateBackground 20s ease infinite;
+    animation: animateBackground 30s ease infinite;
 }
 
-#home .animShadow:after {
+#home .anim-shadow:after {
     top: 0;
     left: 0;
 }
 
-#home .animShadow:before {
+#home .anim-shadow:before {
     bottom: 0;
     right: 0;
 }
@@ -127,7 +128,7 @@ body {
     z-index: 99;
 }
 
-#admin .gridContainer {
+#admin .grid-container {
     background-color: #f9f9f9;
     padding: 20px;
     display: grid;
@@ -139,15 +140,972 @@ body {
 /* sidebar for small screens */
 
 @media screen and (max-width: 767px) {
-    #admin .gridContainer {
+    #admin .grid-container {
         display: block;
     }
     #admin .sidebar {
-        max-width: 18rem;
+        max-width: 15rem;
         transform: translateX(-100%);
         transition: transform 0.4s ease-out;
     }
     #admin .sidebar.active {
         transform: translateX(0);
+    }
+}
+
+#admin #new_order_date {
+    justify-content: space-around;
+}
+
+.container-button-bird {
+    display: flex;
+    justify-content: center;
+}
+
+.container-button-bird .button-bird {
+    width: 300px;
+    height: 100px;
+    font-weight: 600;
+    background-color: #ff0000;
+    border: 2px solid #61210f;
+    border-radius: 0.6em;
+    position: relative;
+    justify-content: center;
+}
+
+.container-button-bird .button-bird-text {
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.container-button-bird .button-bird:focus,
+.container-button-bird .button-bird-text:focus {
+    outline: none;
+}
+
+.container-button-bird .container-button-bird .button-bird:hover .bird-30 {
+    left: 600px;
+    top: -550px;
+    opacity: 0;
+    transition: left 1.5s cubic-bezier(0.42, 0, 0.58, 1), top 1.5s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.5s linear 1s;
+}
+
+.container-button-bird .button-bird:hover .bird-30:after {
+    left: 50px;
+    top: 50px;
+    transition: all 1.5s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .button-bird:hover .bird-30:before {
+    left: -50px;
+    top: 50px;
+    transition: all 1.5s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .button-bird .checkBox {
+    position: absolute;
+    width: 40px;
+    top: 12px;
+    display: none;
+    opacity: 0;
+    fill: #56d600;
+}
+
+.container-button-bird .button-bird.actif {
+    background-color: white;
+    transition: all 0.2s linear 0.1s;
+    box-shadow: #56d600 0px 10px 20px, #56d600 0px 6px 6px;
+    border: 2px solid #56d600;
+}
+
+.container-button-bird .button-bird.actif .button-bird-text {
+    background-color: transparent;
+    border: none;
+    color: #56d600;
+    font-weight: 600;
+    animation: text-fade 1.5s 0.2s;
+}
+
+.container-button-bird .button-bird.actif .checkBox {
+    display: block;
+    animation: checkBox-fade 1.5s linear 0.5s forwards;
+}
+
+.container-button-bird .button-bird.actif .bird-20,
+.container-button-bird .button-bird.actif .bird-19,
+.container-button-bird .button-bird.actif .bird-18,
+.container-button-bird .button-bird.actif .bird-21,
+.container-button-bird .button-bird.actif .bird-23,
+.container-button-bird .button-bird.actif .bird-25,
+.container-button-bird .button-bird.actif .bird-30 {
+    left: 600px;
+    top: -550px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1), top 2s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.5s linear 1.5s;
+}
+
+.container-button-bird .button-bird.actif .bird-5,
+.container-button-bird .button-bird.actif .bird-17,
+.container-button-bird .button-bird.actif .bird-16,
+.container-button-bird .button-bird.actif .bird-15,
+.container-button-bird .button-bird.actif .bird-22 {
+    left: 600px;
+    top: -600px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1) 0.1s, top 2s cubic-bezier(0.42, 0, 0.58, 1) 0.1s, opacity 0.5s linear 1.6s;
+}
+
+.container-button-bird .button-bird.actif .bird-14,
+.container-button-bird .button-bird.actif .bird-13,
+.container-button-bird .button-bird.actif .bird-12,
+.container-button-bird .button-bird.actif .bird-24,
+.container-button-bird .button-bird.actif .bird-1 {
+    left: 650px;
+    top: -650px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1) 0.15s, top 2s cubic-bezier(0.42, 0, 0.58, 1) 0.15s, opacity 0.5s linear 1.65s;
+}
+
+.container-button-bird .button-bird.actif .bird-11,
+.container-button-bird .button-bird.actif .bird-10,
+.container-button-bird .button-bird.actif .bird-9,
+.container-button-bird .button-bird.actif .bird-26,
+.container-button-bird .button-bird.actif .bird-27 {
+    left: 650px;
+    top: -700px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1) 0.2s, top 2s cubic-bezier(0.42, 0, 0.58, 1) 0.2s, opacity 0.5s linear 1.7s;
+}
+
+.container-button-bird .button-bird.actif .bird-8,
+.container-button-bird .button-bird.actif .bird-7,
+.container-button-bird .button-bird.actif .bird-6,
+.container-button-bird .button-bird.actif .bird-28 {
+    left: 700px;
+    top: -750px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1) 0.25s, top 2s cubic-bezier(0.42, 0, 0.58, 1) 0.25s, opacity 0.5s linear 1.75s;
+}
+
+.container-button-bird .button-bird.actif .bird,
+.container-button-bird .button-bird.actif .bird-4,
+.container-button-bird .button-bird.actif .bird-29,
+.container-button-bird .button-bird.actif .bird-3 {
+    left: 750px;
+    top: -800px;
+    opacity: 0;
+    transition: left 2s cubic-bezier(0.42, 0, 0.58, 1) 0.3s, top 2s cubic-bezier(0.42, 0, 0.58, 1) 0.3s, opacity 0.5s linear 1.8s;
+}
+
+.container-button-bird .button-bird.actif .bird-2 {
+    left: 850px;
+    top: -850px;
+    opacity: 0;
+    transition: left 1.5s cubic-bezier(0.42, 0, 0.58, 1) 0.35s, top 1.5s cubic-bezier(0.42, 0, 0.58, 1) 0.35s, opacity 0.5s linear 1.8s;
+}
+
+.container-button-bird .button-bird.actif .bird-5:after,
+.container-button-bird .button-bird.actif .bird-4:after,
+.container-button-bird .button-bird.actif .bird-8:after,
+.container-button-bird .button-bird.actif .bird-14:before,
+.container-button-bird .button-bird.actif .bird-16:after,
+.container-button-bird .button-bird.actif .bird-17:before,
+.container-button-bird .button-bird.actif .bird-21:after,
+.container-button-bird .button-bird.actif .bird-30:after,
+.container-button-bird .button-bird.actif .bird-30:before {
+    left: 50px;
+    top: -100px;
+    transition: all 1s cubic-bezier(0.42, 0, 0.58, 1) -0.3s;
+}
+
+.container-button-bird .button-bird.actif .bird-4:before,
+.container-button-bird .button-bird.actif .bird-7:before,
+.container-button-bird .button-bird.actif .bird-9:after,
+.container-button-bird .button-bird.actif .bird-12:before,
+.container-button-bird .button-bird.actif .bird-13:before,
+.container-button-bird .button-bird.actif .bird-18:after,
+.container-button-bird .button-bird.actif .bird-27:after,
+.container-button-bird .button-bird.actif .bird-26:before {
+    left: -50px;
+    top: 0px;
+    transition: all 1s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .button-bird.actif .bird:before,
+.container-button-bird .button-bird.actif .bird-2:after,
+.container-button-bird .button-bird.actif .bird-1:after,
+.container-button-bird .button-bird.actif .bird-7:after,
+.container-button-bird .button-bird.actif .bird-8:before,
+.container-button-bird .button-bird.actif .bird-15:after,
+.container-button-bird .button-bird.actif .bird-19:before,
+.container-button-bird .button-bird.actif .bird-22:after,
+.container-button-bird .button-bird.actif .bird-28:after,
+.container-button-bird .button-bird.actif .bird-28:before,
+.container-button-bird .button-bird.actif .bird-3:after {
+    left: 100px;
+    top: -100px;
+    transition: all 1s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+}
+
+.container-button-bird .button-bird.actif .bird-2:before,
+.container-button-bird .button-bird.actif .bird-1:before,
+.container-button-bird .button-bird.actif .bird-9:before,
+.container-button-bird .button-bird.actif .bird-12:after,
+.container-button-bird .button-bird.actif .bird-13:after,
+.container-button-bird .button-bird.actif .bird-17:after,
+.container-button-bird .button-bird.actif .bird-19:before,
+.container-button-bird .button-bird.actif .bird-23:after,
+.container-button-bird .button-bird.actif .bird-23:before {
+    left: 50px;
+    top: -10px;
+    transition: all 2s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .button-bird.actif .bird:after,
+.container-button-bird .button-bird.actif .bird-6:before,
+.container-button-bird .button-bird.actif .bird-10:after,
+.container-button-bird .button-bird.actif .bird-11:after,
+.container-button-bird .button-bird.actif .bird-16:before,
+.container-button-bird .button-bird.actif .bird-18:before,
+.container-button-bird .button-bird.actif .bird-20:before,
+.container-button-bird .button-bird.actif .bird-24:before,
+.container-button-bird .button-bird.actif .bird-26:after,
+.container-button-bird .button-bird.actif .bird-27:before {
+    left: 50px;
+    top: 50px;
+    transition: all 2s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .button-bird.actif .bird-3:before,
+.container-button-bird .button-bird.actif .bird-6:after,
+.container-button-bird .button-bird.actif .bird-10:before,
+.container-button-bird .button-bird.actif .bird-11:before,
+.container-button-bird .button-bird.actif .bird-14:after,
+.container-button-bird .button-bird.actif .bird-15:before,
+.container-button-bird .button-bird.actif .bird-20:after,
+.container-button-bird .button-bird.actif .bird-22:before,
+.container-button-bird .button-bird.actif .bird-24:after,
+.container-button-bird .button-bird.actif .bird-25:after,
+.container-button-bird .button-bird.actif .bird-25:before,
+.container-button-bird .button-bird.actif .bird-5:before {
+    left: 100px;
+    top: -10px;
+    transition: all 2s cubic-bezier(0.42, 0, 0.58, 1) -0.5s;
+}
+
+.container-button-bird .bird,
+.container-button-bird .bird:before,
+.container-button-bird .bird:after,
+.container-button-bird .bird-1,
+.container-button-bird .bird-1:after,
+.container-button-bird .bird-1:before,
+.container-button-bird .bird-2,
+.container-button-bird .bird-2:after,
+.container-button-bird .bird-2:before,
+.container-button-bird .bird-3,
+.container-button-bird .bird-3:after,
+.container-button-bird .bird-3:before,
+.container-button-bird .bird-4,
+.container-button-bird .bird-4:after,
+.container-button-bird .bird-4:before,
+.container-button-bird .bird-5,
+.container-button-bird .bird-5:after,
+.container-button-bird .bird-5:before,
+.container-button-bird .bird-6,
+.container-button-bird .bird-6:after,
+.container-button-bird .bird-6:before,
+.container-button-bird .bird-7,
+.container-button-bird .bird-7:after,
+.container-button-bird .bird-7:before,
+.container-button-bird .bird-8,
+.container-button-bird .bird-8:after,
+.container-button-bird .bird-8:before,
+.container-button-bird .bird-9,
+.container-button-bird .bird-9:after,
+.container-button-bird .bird-9:before,
+.container-button-bird .bird-10,
+.container-button-bird .bird-10:after,
+.container-button-bird .bird-10:before,
+.container-button-bird .bird-11,
+.container-button-bird .bird-11:after,
+.container-button-bird .bird-11:before,
+.container-button-bird .bird-12,
+.container-button-bird .bird-12:after,
+.container-button-bird .bird-12:before,
+.container-button-bird .bird-13,
+.container-button-bird .bird-13:after,
+.container-button-bird .bird-13:before,
+.container-button-bird .bird-14,
+.container-button-bird .bird-14:after,
+.container-button-bird .bird-14:before,
+.container-button-bird .bird-15,
+.container-button-bird .bird-15:after,
+.container-button-bird .bird-15:before,
+.container-button-bird .bird-16,
+.container-button-bird .bird-16:after,
+.container-button-bird .bird-16:before,
+.container-button-bird .bird-17,
+.container-button-bird .bird-17:after,
+.container-button-bird .bird-17:before,
+.container-button-bird .bird-18,
+.container-button-bird .bird-18:after,
+.container-button-bird .bird-18:before,
+.container-button-bird .bird-19,
+.container-button-bird .bird-19:after,
+.container-button-bird .bird-19:before,
+.container-button-bird .bird-20,
+.container-button-bird .bird-20:after,
+.container-button-bird .bird-20:before,
+.container-button-bird .bird-21,
+.container-button-bird .bird-21:after,
+.container-button-bird .bird-21:before,
+.container-button-bird .bird-22,
+.container-button-bird .bird-22:after,
+.container-button-bird .bird-22:before,
+.container-button-bird .bird-23,
+.container-button-bird .bird-23:after,
+.container-button-bird .bird-23:before,
+.container-button-bird .bird-24,
+.container-button-bird .bird-24:after,
+.container-button-bird .bird-24:before,
+.container-button-bird .bird-25,
+.container-button-bird .bird-25:after,
+.container-button-bird .bird-25:before,
+.container-button-bird .bird-26,
+.container-button-bird .bird-26:after,
+.container-button-bird .bird-26:before,
+.container-button-bird .bird-27,
+.container-button-bird .bird-27:after,
+.container-button-bird .bird-27:before,
+.container-button-bird .bird-28,
+.container-button-bird .bird-28:after,
+.container-button-bird .bird-28:before,
+.container-button-bird .bird-29,
+.container-button-bird .bird-29:after,
+.container-button-bird .bird-29:before,
+.container-button-bird .bird-30,
+.container-button-bird .bird-30:after,
+.container-button-bird .bird-30:before {
+    opacity: 1;
+    display: block;
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg class='bird' version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 195 71.1' style='enable-background:new 0 0 195 71.1%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st0%7Bfill:%23ff0000%3B%7D%3C/style%3E%3Ctitle%3Ebirds%3C/title%3E%3Cg id='b1'%3E%3Cpath class='st0' d='M9.3 40.5c6.1-2.1 12.2-3.6 16.2-2.1s7.9 2.3 11.9 3.8c3 1.1 9.9 1.3 14.6-2.2c2.9-2.1 7.1-4.9 11.7 0c-0.2-1.5-1.5-2.8-1.8-3.8c-0.4-1.4-0.3-2.2-1.8-3.8c-2.2-2.3-5.2-1.6-6.9-1.4c-3.2 0.4-3.5-1.9-2.9-4.4s11.5-22.2 9-24.2C55.9 0 51.6-0.3 47.9 1.3c-5.4 2.5-16.6 15.3-19.5 18.5c-3.6 4-0.1 10.6-0.1 10.6s2.9 4.3-5.4 2.6C17.7 31.8 0 33.7 0 33.7L9.3 40.5z'/%3E%3C/g%3E%3Cg id='b2'%3E%3Cpath class='st0' d='M116.3 30.8c1.8 0.1 5.2-0.7 7 0.1c2 1 2.2 1.7 3.2 2.8c0.7 0.9 2.4 1.6 3.2 2.8c-4.8-2.1-9.6 1.3-10.2 1.8c-1.3 1-2.3 2.4-2.8 4l0 0c-1.5 4-7.7 29.4-9.3 28.4c-2.5-1.5-7.3-4.9-8.6-8.3c-2.2-5.6-2.8-18.3-8.9-22.3C84 36.3 78 35 72.5 37.2s-3.9-1.7-3.9-1.7s20.8-4.1 30.2-5.5S113.3 30.6 116.3 30.8z'/%3E%3C/g%3E%3Cg id='b3'%3E%3Cpath class='st0' d='M186.4 35.2c1.2-0.3 3.2-0.7 8 1.4c-0.8-1.2-2.4-2-3.2-2.8c-0.9-1.1-1.1-1.9-3.2-2.8c-1.7-0.8-5.1 0.1-7-0.1c-3-0.2-8.2-2.3-17.6-0.8s-30.1 5.5-30.1 5.5s-1.7 3.9 3.9 1.7s15.7-2.2 20.6-0.2c2.2 0.8 4.1 2.2 5.6 4c2.2 2.4 4.6 13.5 7.1 15c1.2 0.7 6.1-7 8.7-11.5c2.5 1.7 5.4 3 8.4 3.7c0.5 0.1-2-8.8-3.1-12.3C185.1 35.6 185.7 35.4 186.4 35.2z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: auto 100%;
+    width: 60px;
+    height: 33px;
+    top: 0;
+    left: 0;
+    animation-name: fly-cycle;
+    animation-timing-function: steps(3);
+    animation-iteration-count: infinite;
+}
+
+.container-button-bird .bird-1:after,
+.container-button-bird .bird-1:before,
+.container-button-bird .bird-2:after,
+.container-button-bird .bird-2:before,
+.container-button-bird .bird-4:after,
+.container-button-bird .bird-4:before,
+.container-button-bird .bird-5:after,
+.container-button-bird .bird-5:before,
+.container-button-bird .bird-7:after,
+.container-button-bird .bird-7:before,
+.container-button-bird .bird-8:after,
+.container-button-bird .bird-8:before,
+.container-button-bird .bird-10:after,
+.container-button-bird .bird-10:before,
+.container-button-bird .bird-11:after,
+.container-button-bird .bird-11:before,
+.container-button-bird .bird-13:after,
+.container-button-bird .bird-13:before,
+.container-button-bird .bird-14:after,
+.container-button-bird .bird-14:before,
+.container-button-bird .bird-16:after,
+.container-button-bird .bird-16:before,
+.container-button-bird .bird-17:after,
+.container-button-bird .bird-17:before,
+.container-button-bird .bird-18,
+.container-button-bird .bird-18:after,
+.container-button-bird .bird-18:before,
+.container-button-bird .bird-19,
+.container-button-bird .bird-19:after,
+.container-button-bird .bird-19:before,
+.container-button-bird .bird-20:after,
+.container-button-bird .bird-20:before,
+.container-button-bird .bird-21,
+.container-button-bird .bird-21:after,
+.container-button-bird .bird-21:before,
+.container-button-bird .bird-22,
+.container-button-bird .bird-22:after,
+.container-button-bird .bird-22:before,
+.container-button-bird .bird-23,
+.container-button-bird .bird-23:after,
+.container-button-bird .bird-23:before,
+.container-button-bird .bird-24,
+.container-button-bird .bird-24:after,
+.container-button-bird .bird-24:before,
+.container-button-bird .bird-25,
+.container-button-bird .bird-25:after,
+.container-button-bird .bird-25:before,
+.container-button-bird .bird-26,
+.container-button-bird .bird-26:after,
+.container-button-bird .bird-26:before,
+.container-button-bird .bird-27,
+.container-button-bird .bird-27:after,
+.container-button-bird .bird-27:before,
+.container-button-bird .bird-28,
+.container-button-bird .bird-28:after,
+.container-button-bird .bird-28:before,
+.container-button-bird .bird-29,
+.container-button-bird .bird-29:after,
+.container-button-bird .bird-29:before,
+.container-button-bird .bird-30,
+.container-button-bird .bird-30:after,
+.container-button-bird .bird-30:before {
+    width: 30px;
+    height: 33px;
+    top: -8px;
+    left: 8px;
+    z-index: -100;
+}
+
+.container-button-bird .bird-21,
+.container-button-bird .bird-22,
+.container-button-bird .bird-23,
+.container-button-bird .bird-24,
+.container-button-bird .bird-25,
+.container-button-bird .bird-26,
+.container-button-bird .bird-27,
+.container-button-bird .bird-28,
+.container-button-bird .bird-29 {
+    top: 0;
+}
+
+.container-button-bird .bird-22,
+.container-button-bird .bird-25,
+.container-button-bird .bird-28 {
+    top: 25px;
+}
+
+.container-button-bird .bird-23,
+.container-button-bird .bird-26,
+.container-button-bird .bird-29 {
+    top: 45px;
+}
+
+.container-button-bird .bird-24,
+.container-button-bird .bird-25,
+.container-button-bird .bird-26 {
+    left: 133px;
+}
+
+.container-button-bird .bird-27,
+.container-button-bird .bird-28,
+.container-button-bird .bird-29 {
+    left: 256px;
+}
+
+.container-button-bird .bird-18 {
+    top: 0;
+    left: 0;
+}
+
+.container-button-bird .bird-18:after,
+.container-button-bird .bird-18:before {
+    left: -20px;
+}
+
+.container-button-bird .bird-19:after,
+.container-button-bird .bird-19:before {
+    left: -10px;
+}
+
+.container-button-bird .bird-1:before,
+.container-button-bird .bird-4:before,
+.container-button-bird .bird-7:before,
+.container-button-bird .bird-10:before,
+.container-button-bird .bird-13:before,
+.container-button-bird .bird-16:before,
+.container-button-bird .bird-19:before {
+    top: 18px;
+}
+
+.container-button-bird .bird-2:after,
+.container-button-bird .bird-5:after,
+.container-button-bird .bird-8:after,
+.container-button-bird .bird-11:after,
+.container-button-bird .bird-14:after,
+.container-button-bird .bird-17:after,
+.container-button-bird .bird-20:after {
+    top: -18px;
+    left: 12px;
+}
+
+.container-button-bird .bird-20:after,
+.container-button-bird .bird-20:before,
+.container-button-bird .bird-21:after {
+    left: 27px;
+}
+
+.container-button-bird .bird-2:before,
+.container-button-bird .bird-5:before,
+.container-button-bird .bird-8:before,
+.container-button-bird .bird-11:before,
+.container-button-bird .bird-14:before,
+.container-button-bird .bird-17:before,
+.container-button-bird .bird-20:before {
+    top: -36px;
+    left: 12px;
+}
+
+.container-button-bird .bird-21:before,
+.container-button-bird .bird-22:before,
+.container-button-bird .bird-23:before,
+.container-button-bird .bird-24:before,
+.container-button-bird .bird-25:before,
+.container-button-bird .bird-26:before {
+    top: 10px;
+    left: 45px;
+}
+
+.container-button-bird .bird-21:after,
+.container-button-bird .bird-22:after,
+.container-button-bird .bird-23:after,
+.container-button-bird .bird-24:after,
+.container-button-bird .bird-25:after,
+.container-button-bird .bird-26:after,
+.container-button-bird .bird-27:after,
+.container-button-bird .bird-28:after,
+.container-button-bird .bird-29:after {
+    left: 10px;
+    top: 4px;
+}
+
+.container-button-bird .bird-27:before,
+.container-button-bird .bird-28:before,
+.container-button-bird .bird-29:before {
+    left: -45px;
+    top: 10px;
+}
+
+.container-button-bird .bird:before,
+.container-button-bird .bird:after,
+.container-button-bird .bird-1:after,
+.container-button-bird .bird-1:before,
+.container-button-bird .bird-2:before,
+.container-button-bird .bird-2:after,
+.container-button-bird .bird-3:after,
+.container-button-bird .bird-3:before,
+.container-button-bird .bird-4:after,
+.container-button-bird .bird-4:before,
+.container-button-bird .bird-5:after,
+.container-button-bird .bird-5:before,
+.container-button-bird .bird-6:after,
+.container-button-bird .bird-6:before,
+.container-button-bird .bird-7:after,
+.container-button-bird .bird-7:before,
+.container-button-bird .bird-8:after,
+.container-button-bird .bird-8:before,
+.container-button-bird .bird-9:after,
+.container-button-bird .bird-9:before,
+.container-button-bird .bird-10:after,
+.container-button-bird .bird-10:before,
+.container-button-bird .bird-11:after,
+.container-button-bird .bird-11:before,
+.container-button-bird .bird-12:after,
+.container-button-bird .bird-12:before,
+.container-button-bird .bird-13:after,
+.container-button-bird .bird-13:before,
+.container-button-bird .bird-14:after,
+.container-button-bird .bird-14:before,
+.container-button-bird .bird-15:after,
+.container-button-bird .bird-15:before,
+.container-button-bird .bird-16:after,
+.container-button-bird .bird-16:before,
+.container-button-bird .bird-17:after,
+.container-button-bird .bird-17:before,
+.container-button-bird .bird-18:after,
+.container-button-bird .bird-18:before,
+.container-button-bird .bird-19:after,
+.container-button-bird .bird-19:before,
+.container-button-bird .bird-20:after,
+.container-button-bird .bird-20:before,
+.container-button-bird .bird-21:after,
+.container-button-bird .bird-21:before,
+.container-button-bird .bird-22:after,
+.container-button-bird .bird-22:before,
+.container-button-bird .bird-23:after,
+.container-button-bird .bird-23:before,
+.container-button-bird .bird-24:after,
+.container-button-bird .bird-24:before,
+.container-button-bird .bird-25:after,
+.container-button-bird .bird-25:before,
+.container-button-bird .bird-26:after,
+.container-button-bird .bird-26:before,
+.container-button-bird .bird-27:after,
+.container-button-bird .bird-27:before,
+.container-button-bird .bird-28:after,
+.container-button-bird .bird-28:before,
+.container-button-bird .bird-29:after,
+.container-button-bird .bird-29:before,
+.container-button-bird .bird-30:after,
+.container-button-bird .bird-30:before {
+    content: "";
+}
+
+.container-button-bird .bird:before,
+.container-button-bird .bird-3:before,
+.container-button-bird .bird-12:before,
+.container-button-bird .bird-15:before,
+.container-button-bird .bird-6:before,
+.container-button-bird .bird-9:before,
+.container-button-bird .bird-18:before {
+    top: 10px;
+}
+
+.container-button-bird .bird:after,
+.container-button-bird .bird-6:after,
+.container-button-bird .bird-12:after,
+.container-button-bird .bird-15:after,
+.container-button-bird .bird-9:after,
+.container-button-bird .bird-18:after {
+    top: 35px;
+}
+
+.container-button-bird .bird-3:after {
+    left: -10px;
+}
+
+.container-button-bird .bird-3:after {
+    top: 40px;
+}
+
+.container-button-bird .bird-1,
+.container-button-bird .bird-4,
+.container-button-bird .bird-7,
+.container-button-bird .bird-10,
+.container-button-bird .bird-13,
+.container-button-bird .bird-16,
+.container-button-bird .bird-19 {
+    top: 25px;
+}
+
+.container-button-bird .bird-2 {
+    top: 45px;
+}
+
+.container-button-bird .bird-5 {
+    top: 47px;
+    left: 25px;
+}
+
+.container-button-bird .bird-8,
+.container-button-bird .bird-11,
+.container-button-bird .bird-14,
+.container-button-bird .bird-17,
+.container-button-bird .bird-20 {
+    top: 50px;
+}
+
+.container-button-bird .bird-3,
+.container-button-bird .bird-4 {
+    left: 59px;
+}
+
+.container-button-bird .bird-6,
+.container-button-bird .bird-7,
+.container-button-bird .bird-8 {
+    left: 118px;
+}
+
+.container-button-bird .bird-9,
+.container-button-bird .bird-10,
+.container-button-bird .bird-11 {
+    left: 177px;
+}
+
+.container-button-bird .bird-12,
+.container-button-bird .bird-13,
+.container-button-bird .bird-14 {
+    left: 236px;
+}
+
+.container-button-bird .bird-15,
+.container-button-bird .bird-16,
+.container-button-bird .bird-17 {
+    left: 206.5px;
+}
+
+.container-button-bird .bird-20 {
+    left: 108px;
+}
+
+.container-button-bird .bird-18,
+.container-button-bird .bird-19 {
+    left: 137.5px;
+}
+
+.container-button-bird .bird-30,
+.container-button-bird .bird-30:after,
+.container-button-bird .bird-30:before {
+    left: 118px;
+    top: 0;
+}
+
+.container-button-bird .bird-30:before {
+    top: 25px;
+}
+
+.container-button-bird .bird-30:after {
+    top: 20px;
+}
+
+.container-button-bird .actif .bird,
+.container-button-bird .button-bird:hover .bird,
+.container-button-bird .actif .bird:before,
+.container-button-bird .button-bird:hover .bird:before,
+.container-button-bird .actif .bird-3,
+.container-button-bird .button-bird:hover .bird-3,
+.container-button-bird .actif .bird-4,
+.container-button-bird .button-bird:hover .bird-4,
+.container-button-bird .actif .bird-4:after,
+.container-button-bird .button-bird:hover .bird-4:after,
+.container-button-bird .actif .bird-4:before,
+.container-button-bird .button-bird:hover .bird-4:before,
+.container-button-bird .actif .bird-9,
+.container-button-bird .button-bird:hover .bird-9,
+.container-button-bird .actif .bird-9:after,
+.container-button-bird .button-bird:hover .bird-9:after,
+.container-button-bird .actif .bird-13,
+.container-button-bird .button-bird:hover .bird-13,
+.container-button-bird .actif .bird-13:after,
+.container-button-bird .button-bird:hover .bird-13:after,
+.container-button-bird .actif .bird-13:before,
+.container-button-bird .button-bird:hover .bird-13:before,
+.container-button-bird .actif .bird-15,
+.container-button-bird .button-bird:hover .bird-15,
+.container-button-bird .actif .bird-16,
+.container-button-bird .button-bird:hover .bird-16,
+.container-button-bird .actif .bird-18,
+.container-button-bird .button-bird:hover .bird-18,
+.container-button-bird .actif .bird-21,
+.container-button-bird .button-bird:hover .bird-21,
+.container-button-bird .actif .bird-21:after,
+.container-button-bird .button-bird:hover .bird-21:after,
+.container-button-bird .actif .bird-27:before,
+.container-button-bird .button-bird:hover .bird-27:before,
+.container-button-bird .actif .bird-24,
+.container-button-bird .button-bird:hover .bird-24,
+.container-button-bird .actif .bird-24:after,
+.container-button-bird .button-bird:hover .bird-24:after,
+.container-button-bird .actif .bird-24:before,
+.container-button-bird .button-bird:hover .bird-24:before,
+.container-button-bird .actif .bird-27,
+.container-button-bird .button-bird:hover .bird-27,
+.container-button-bird .actif .bird-27:after,
+.container-button-bird .button-bird:hover .bird-27:after,
+.container-button-bird .actif .bird-27:before,
+.container-button-bird .button-bird:hover .bird-27:before,
+.container-button-bird .actif .bird-30:before,
+.container-button-bird .button-bird:hover .bird-30:before {
+    animation-duration: 0.5s;
+    animation-delay: -0.5s;
+}
+
+.container-button-bird .actif .bird-1,
+.container-button-bird .button-bird:hover .bird-1,
+.container-button-bird .actif .bird-1:after,
+.container-button-bird .button-bird:hover .bird-1:after,
+.container-button-bird .actif .bird-3:before,
+.container-button-bird .button-bird:hover .bird-3:before,
+.container-button-bird .actif .bird-5,
+.container-button-bird .button-bird:hover .bird-5,
+.container-button-bird .actif .bird-5:after,
+.container-button-bird .button-bird:hover .bird-5:after,
+.container-button-bird .actif .bird-5:before,
+.container-button-bird .button-bird:hover .bird-5:before,
+.container-button-bird .actif .bird-7,
+.container-button-bird .button-bird:hover .bird-7,
+.container-button-bird .actif .bird-7:after,
+.container-button-bird .button-bird:hover .bird-7:after,
+.container-button-bird .actif .bird-7:before,
+.container-button-bird .button-bird:hover .bird-7:before,
+.container-button-bird .actif .bird-9:before,
+.container-button-bird .button-bird:hover .bird-9:before,
+.container-button-bird .actif .bird-10,
+.container-button-bird .button-bird:hover .bird-10,
+.container-button-bird .actif .bird-10:after,
+.container-button-bird .button-bird:hover .bird-10:after,
+.container-button-bird .actif .bird-10:before,
+.container-button-bird .button-bird:hover .bird-10:before,
+.container-button-bird .actif .bird-14,
+.container-button-bird .button-bird:hover .bird-14,
+.container-button-bird .actif .bird-14:after,
+.container-button-bird .button-bird:hover .bird-14:after,
+.container-button-bird .actif .bird-14:before,
+.container-button-bird .button-bird:hover .bird-14:before,
+.container-button-bird .actif .bird-17,
+.container-button-bird .button-bird:hover .bird-17,
+.container-button-bird .actif .bird-17:after,
+.container-button-bird .button-bird:hover .bird-17:after,
+.container-button-bird .actif .bird-17:before,
+.container-button-bird .button-bird:hover .bird-17:before,
+.container-button-bird .actif .bird-19,
+.container-button-bird .button-bird:hover .bird-19,
+.container-button-bird .actif .bird-19:after,
+.container-button-bird .button-bird:hover .bird-19:after,
+.container-button-bird .actif .bird-19:before,
+.container-button-bird .button-bird:hover .bird-19:before,
+.container-button-bird .actif .bird-18:after,
+.container-button-bird .button-bird:hover .bird-18:after,
+.container-button-bird .actif .bird-22,
+.container-button-bird .button-bird:hover .bird-22,
+.container-button-bird .actif .bird-22:after,
+.container-button-bird .button-bird:hover .bird-22:after,
+.container-button-bird .actif .bird-22:before,
+.container-button-bird .button-bird:hover .bird-22:before,
+.container-button-bird .actif .bird-25,
+.container-button-bird .button-bird:hover .bird-25,
+.container-button-bird .actif .bird-25:after,
+.container-button-bird .button-bird:hover .bird-25:after,
+.container-button-bird .actif .bird-25:before,
+.container-button-bird .button-bird:hover .bird-25:before,
+.container-button-bird .actif .bird-28,
+.container-button-bird .button-bird:hover .bird-28,
+.container-button-bird .actif .bird-28:after,
+.container-button-bird .button-bird:hover .bird-28:after,
+.container-button-bird .actif .bird-28:before,
+.container-button-bird .button-bird:hover .bird-28:before,
+.container-button-bird .actif .bird-30:after,
+.container-button-bird .button-bird:hover .bird-30:after {
+    animation-duration: 0.7s;
+    animation-delay: -0.5s;
+}
+
+.container-button-bird .actif .bird:after,
+.container-button-bird .button-bird:hover .bird:after,
+.container-button-bird .actif .bird-1:before,
+.container-button-bird .button-bird:hover .bird-1:before,
+.container-button-bird .actif .bird-2,
+.container-button-bird .button-bird:hover .bird-2,
+.container-button-bird .actif .bird-2:before,
+.container-button-bird .button-bird:hover .bird-2:before,
+.container-button-bird .actif .bird-2:after,
+.container-button-bird .button-bird:hover .bird-2:after,
+.container-button-bird .actif .bird-3:after,
+.container-button-bird .button-bird:hover .bird-3:after,
+.container-button-bird .actif .bird-6,
+.container-button-bird .button-bird:hover .bird-6,
+.container-button-bird .actif .bird-6:after,
+.container-button-bird .button-bird:hover .bird-6:after,
+.container-button-bird .actif .bird-6:before,
+.container-button-bird .button-bird:hover .bird-6:before,
+.container-button-bird .actif .bird-8,
+.container-button-bird .button-bird:hover .bird-8,
+.container-button-bird .actif .bird-8:after,
+.container-button-bird .button-bird:hover .bird-8:after,
+.container-button-bird .actif .bird-8:before,
+.container-button-bird .button-bird:hover .bird-8:before,
+.container-button-bird .actif .bird-11,
+.container-button-bird .button-bird:hover .bird-11,
+.container-button-bird .actif .bird-11:after,
+.container-button-bird .button-bird:hover .bird-11:after,
+.container-button-bird .actif .bird-11:before,
+.container-button-bird .button-bird:hover .bird-11:before,
+.container-button-bird .actif .bird-12,
+.container-button-bird .button-bird:hover .bird-12,
+.container-button-bird .actif .bird-12:after,
+.container-button-bird .button-bird:hover .bird-12:after,
+.container-button-bird .actif .bird-12:before,
+.container-button-bird .button-bird:hover .bird-12:before,
+.container-button-bird .actif .bird-16,
+.container-button-bird .button-bird:hover .bird-16,
+.container-button-bird .actif .bird-16:after,
+.container-button-bird .button-bird:hover .bird-16:after,
+.container-button-bird .actif .bird-16:before,
+.container-button-bird .button-bird:hover .bird-16:before,
+.container-button-bird .actif .bird-20,
+.container-button-bird .button-bird:hover .bird-20,
+.container-button-bird .actif .bird-20:after,
+.container-button-bird .button-bird:hover .bird-20:after,
+.container-button-bird .actif .bird-20:before,
+.container-button-bird .button-bird:hover .bird-20:before,
+.container-button-bird .actif .bird-18:before,
+.container-button-bird .button-bird:hover .bird-18:before,
+.container-button-bird .actif .bird-23,
+.container-button-bird .button-bird:hover .bird-23,
+.container-button-bird .actif .bird-23:after,
+.container-button-bird .button-bird:hover .bird-23:after,
+.container-button-bird .actif .bird-23:before,
+.container-button-bird .button-bird:hover .bird-23:before,
+.container-button-bird .actif .bird-26,
+.container-button-bird .button-bird:hover .bird-26,
+.container-button-bird .actif .bird-26:after,
+.container-button-bird .button-bird:hover .bird-26:after,
+.container-button-bird .actif .bird-26:before,
+.container-button-bird .button-bird:hover .bird-26:before,
+.container-button-bird .actif .bird-29,
+.container-button-bird .button-bird:hover .bird-29,
+.container-button-bird .actif .bird-29:after,
+.container-button-bird .button-bird:hover .bird-29:after,
+.container-button-bird .actif .bird-29:before,
+.container-button-bird .button-bird:hover .bird-29:before,
+.container-button-bird .actif .bird-30,
+.container-button-bird .button-bird:hover .bird-30 {
+    animation-duration: 0.6s;
+    animation-delay: -0.75s;
+}
+
+@keyframes fly-cycle {
+    100% {
+        background-position: -360px 0;
+    }
+}
+
+@keyframes text-fade {
+    0% {
+        color: transparent;
+        opacity: 0;
+        top: -50%;
+        left: auto;
+    }
+    100% {
+        color: #56d600;
+        opacity: 1;
+    }
+}
+
+@keyframes checkBox-fade {
+    0% {
+        top: -500px;
+        opacity: 0;
+    }
+    5% {
+        transform: rotate(10deg);
+        left: 30%;
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(-5deg);
+        left: 45%;
+    }
+    75% {
+        transform: rotate(10deg);
+        left: 32%;
+    }
+    100% {
+        transform: rotate(0deg);
+        opacity: 1;
+        bottom: 0px;
+        left: 43%;
     }
 }

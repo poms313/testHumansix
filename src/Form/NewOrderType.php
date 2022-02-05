@@ -40,7 +40,7 @@ class NewOrderType extends AbstractType
             ))
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
-                'attr' => ['class' => 'customBtn btn-block ']
+                'attr' => ['class' => 'button-bird-text']
             ]);
         ;
     }

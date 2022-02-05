@@ -19,34 +19,30 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
 
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-        /*  change the createNewUser variable to false to disable registration */
-        $createNewUser = true;
-        if ($createNewUser) {
-            if ($form->isSubmitted() && $form->isValid()) {
-                // encode the plain password
-                $user->setPassword(
-                    $userPasswordHasher->hashPassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
+        /*  change the registrationActivated variable to false to disable registration */
+        $registrationActivated = true;
+        if ($registrationActivated) {
+            $user = new User();
+            $user->setUsername('admin');
+            // encode the password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    'S3cr3T+'
+                )
+            );
 
-                /* Only for create admin user */
-                $roles[] = 'ROLE_ADMIN';
-                $user->setRoles($roles);
+            /* Only for create admin user */
+            $roles[] = 'ROLE_ADMIN';
+            $user->setRoles($roles);
 
-                $entityManager->persist($user);
-                $entityManager->flush();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-                return $this->redirectToRoute('admin');
-            }
+            return $this->redirectToRoute('home_login');
         }
         return $this->render('home/registration/index.html.twig', [
-            'registrationForm' => $form->createView(),
-            'createNewUser' => $createNewUser,
+            'registrationActivated' => $registrationActivated,
         ]);
     }
 }

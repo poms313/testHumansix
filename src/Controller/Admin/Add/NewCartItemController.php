@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin\Add;
 
-use App\Entity\ActualCartItem;
+use App\Entity\WaitingOrderCart;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\Persistence\ManagerRegistry;
-use App\Form\ActualCartItemType;
-use App\Repository\ActualCartItemRepository;
+use App\Form\WaitingOrderCartType;
+use App\Repository\WaitingOrderCartRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 class NewCartItemController extends AbstractController
@@ -17,15 +17,15 @@ class NewCartItemController extends AbstractController
     /**
      * @Route("/admin/new/cart/item", name="admin_new_cart_item")
      */
-    public function index(Request $request, ManagerRegistry $doctrine, ActualCartItemRepository $actualCartItemRepository): Response
+    public function index(Request $request, ManagerRegistry $doctrine, WaitingOrderCartRepository $waitingOrderCartRepository): Response
     {
 
-        $form = $this->createForm(ActualCartItemType::class);
+        $form = $this->createForm(WaitingOrderCartType::class);
         $form->handleRequest($request);
-        $actualCart = $actualCartItemRepository->findAll();
+        $actualCart = $waitingOrderCartRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newCartItem = new ActualCartItem();
+            $newCartItem = new WaitingOrderCart();
             $newCartItem = $form->getData();
             
             $entityManager = $doctrine->getManager();

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ActualCartItemRepository;
+use App\Repository\WaitingOrderCartRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ActualCartItemRepository::class)
+ * @ORM\Entity(repositoryClass=WaitingOrderCartRepository::class)
  */
-class ActualCartItem
+class WaitingOrderCart
 {
     /**
      * @ORM\Id
